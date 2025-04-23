@@ -4,7 +4,7 @@ Evaluation task for QA automation engineer role
 
 ## Task
 
-You are required to create automated tests for the [Netlify website](https://www.netlify.com/) using Playwright. Please implement the following [test cases](./TEST_CASES.md) (*please refer to [assumptions/limitations](#assumptionslimitations)*).
+You are required to create automated tests for the [Netlify website](https://www.netlify.com/) using Playwright. Please implement the following [test cases](./TEST_CASES.md) (_please refer to [assumptions/limitations](#assumptionslimitations)_).
 
 ## Setup
 
@@ -28,13 +28,13 @@ You are required to create automated tests for the [Netlify website](https://www
 1. I used Playwright to create the test cases. As specified in the task.
 2. I used the Page Object Model design pattern to create a separate page object for the Netlify website. This allows for better organization and maintainability of the test code.
 3. I separated test cases into different test suites to improve readability and maintainability.
-4. I created custom `test` fixture to handle locators and actions for the Netlify website. It's located in the `fixtures/base.ts`. This allows for better organization and maintainability of the test code.
+4. I created custom `test` fixture to handle locators and actions for the Netlify website. It's located in the `fixtures/base.ts`. I extended the `test` fixture to include `netlify` page object, which allows for easy access to the page object methods and locators in the test cases.
 5. I created seprate place in project directory for locators (`locators/netlify.ts`). Normally it would be in some shared location between frontend and tests (so we won't repeat locators in both places), but for the sake of simplicity I created it in the test project directory.
 6. I created three suite files, for test cases specified in the task. Each suite file contains one or more test cases (in assumptions I wrote why there might be more) that are related to the specific functionality of the Netlify website.
 
 ## Assumptions/Limitations
 
-- Test cases were writtien with contradictory assertions (*"Test form submission with valid data"* and *"Test form validation with invalid data"*), so I had to split them into two separate test cases in one test suite.
+- Test cases were writtien with contradictory assertions (_"Test form submission with valid data"_ and _"Test form validation with invalid data"_), so I had to split them into two separate test cases in one test suite.
 - Test cases didn't have specifc test data, so I used some random data for the tests.
 - Test cases didn't have specific return values, so I assumed that system under test is working correctly and returns expected values, and I used them as assertions.
 - Task didn't specify if it should be done available for mobile devices, so I used the default viewport size (1280x720).
