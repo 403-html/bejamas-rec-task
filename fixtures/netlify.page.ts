@@ -10,6 +10,9 @@ const locators = {
     errorMessage:
       "//section[contains(@class, 'newsletter-form')]//label[contains(@class, 'hs-error-msg')]",
   },
+  meta: {
+    noIndex: '//meta[@name="robots"][contains(@content, "noindex")]',
+  },
 };
 
 export class NetlifyPage {
@@ -31,5 +34,17 @@ export class NetlifyPage {
    */
   async goto(slug: string = "/") {
     await this.page.goto(`${this.url}${slug}`);
+  }
+
+  async requestToPage(
+    slug: string = "/",
+    options: { method?: string; data?: any } = {},
+  ) {
+    const { method = "GET", data } = options;
+    const response = await this.page.request.fetch(`${this.url}${slug}`, {
+      method,
+      data,
+    });
+    return response;
   }
 }
