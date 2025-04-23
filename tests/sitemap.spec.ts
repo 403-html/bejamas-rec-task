@@ -1,6 +1,6 @@
 import { test } from "../fixtures/base";
 import { expect } from "@playwright/test";
-import { staticContent } from "../data/staticContent";
+import { staticContent } from "../data/static-content";
 
 test.describe("Sitemap/Crawlability", () => {
   test("should sitemap.xml be accessible", async ({ netlifyPage }) => {

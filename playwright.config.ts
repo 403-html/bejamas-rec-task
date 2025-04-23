@@ -1,4 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
+import "dotenv/config";
+
+if (!process.env.BASE_URL) {
+  throw new Error("BASE_URL is not set. Please set it in your .env file.");
+}
 
 export default defineConfig({
   testDir: "./tests",

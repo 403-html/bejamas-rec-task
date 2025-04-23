@@ -1,4 +1,5 @@
 import type { Page } from "@playwright/test";
+import "dotenv/config";
 
 const locators = {
   newsletter: {
@@ -9,6 +10,11 @@ const locators = {
       "//section[contains(@class, 'newsletter-form')]//input[@type='submit']",
     errorMessage:
       "//section[contains(@class, 'newsletter-form')]//label[contains(@class, 'hs-error-msg')]",
+  },
+  fourofour: {
+    title: "//div[contains(@class, 'text-layer-wrapper')]//h1",
+    description: "//div[contains(@class, 'text-layer-wrapper')]//p",
+    link: "//div[contains(@class, 'text-layer-wrapper')]//a[contains(@class, '404-link')]",
   },
   meta: {
     noIndex: '//meta[@name="robots"][contains(@content, "noindex")]',
@@ -22,7 +28,7 @@ export class NetlifyPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.url = "https://www.netlify.com";
+    this.url = process.env.BASE_URL as string;
   }
 
   /**
@@ -33,6 +39,10 @@ export class NetlifyPage {
    * @returns A promise that resolves when the navigation is complete.
    */
   async goto(slug: string = "/") {
+    if (!slug.startsWith("/") && slug.startsWith("http")) {
+      await this.page.goto(slug);
+      return;
+    }
     await this.page.goto(`${this.url}${slug}`);
   }
 
@@ -41,6 +51,14 @@ export class NetlifyPage {
     options: { method?: string; data?: any } = {},
   ) {
     const { method = "GET", data } = options;
+    if (!slug.startsWith("/") && slug.startsWith("http")) {
+      const response = await this.page.request.fetch(slug, {
+        method,
+        data,
+      });
+      return response;
+    }
+
     const response = await this.page.request.fetch(`${this.url}${slug}`, {
       method,
       data,
