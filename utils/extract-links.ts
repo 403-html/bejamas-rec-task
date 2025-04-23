@@ -10,11 +10,8 @@ export const extractLinks = async (page: Page, baseURL: string): Promise<string[
       (acc: string[], href: string | null) => {
         if (href && !href.startsWith("#") && !href.startsWith("mailto:")) {
           if (href.startsWith("/")) {
-            console.log("Relative link found:", href);
             acc.push(`${baseURL}${href}`);
-            console.log("Converted to absolute link:", `${baseURL}${href}`);
           } else {
-            console.log("Absolute link found:", href);
             acc.push(href);
           }
         }

@@ -5,7 +5,7 @@ const locators = {
   newsletter: {
     subheader: "//section[contains(@class, 'newsletter-form')]//h2",
     input:
-      "//section[contains(@class, 'newsletter-form')]//input[@type='email']",
+      "//section[contains(@class, 'newsletter-form')]//input[@type='email' and contains(@class, 'hs-input')]",
     subscribeButton:
       "//section[contains(@class, 'newsletter-form')]//input[@type='submit']",
     errorMessage:
