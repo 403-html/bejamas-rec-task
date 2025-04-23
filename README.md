@@ -27,10 +27,12 @@ You are required to create automated tests for the [Netlify website](https://www
 
 1. I used Playwright to create the test cases. As specified in the task.
 2. I used the Page Object Model design pattern to create a separate page object for the Netlify website. This allows for better organization and maintainability of the test code.
-3. I separated test cases into different test suites to improve readability and maintainability.
+3. I created three suite files, for test cases specified in the task. Each suite file contains one or more test cases (in assumptions I wrote why there might be more) that are related to the specific functionality of the Netlify website.
+   1. `newsletter.spec.ts` - contains test cases related to the newsletter subscription form
+   2. `sitemap.spec.ts` - contains test cases related to the sitemap visibility and crawling
+   3. `404.spec.ts` - contains test cases related to checking if all links on the page are working and not returning 404 errors
 4. I created custom `test` fixture to handle locators and actions for the Netlify website. It's located in the `fixtures/base.ts`. I extended the `test` fixture to include `netlify` page object, which allows for easy access to the page object methods and locators in the test cases.
 5. I created seprate place in project directory for locators (`locators/netlify.ts`). Normally it would be in some shared location between frontend and tests (so we won't repeat locators in both places), but for the sake of simplicity I created it in the test project directory.
-6. I created three suite files, for test cases specified in the task. Each suite file contains one or more test cases (in assumptions I wrote why there might be more) that are related to the specific functionality of the Netlify website.
 
 ## Assumptions/Limitations
 
@@ -40,3 +42,4 @@ You are required to create automated tests for the [Netlify website](https://www
 - Task didn't specify if it should be done available for mobile devices, so I used the default viewport size (1280x720).
 - Task didn't specify if any permissions for browser are required, so I assumed that no permissions are required.
 - One of limitations is that Netlify website is production website, so they strip away locators. So I had to use locating elements by DOM structure/stripping ids/etc. This is not a good practice (much better would be, if they'd have test attributes), but I had to do it for the sake of the task.
+- "Case" of checking links if they don't return 404 doesn't specify if it should be done for all pages or just the homepage. I assumed that it should be done for the homepage only. Also it's not good idea to have it such test on e2e layer as it should be done on integration level, but for the sake of the task I did it on e2e layer.
