@@ -1,6 +1,6 @@
 import { test } from "../fixtures/base";
 import { expect } from "@playwright/test";
-import { staticContent } from "../data/uiText";
+import { staticContent } from "../data/staticContent";
 import { testData } from "../data/testData";
 
 test.describe("Newsletter", () => {
