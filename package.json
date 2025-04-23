@@ -1,0 +1,28 @@
+{
+  "name": "bejamas-rec-task",
+  "version": "1.0.0",
+  "description": "Evaluation task for QA automation engineer role",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/403-html/bejamas-rec-task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/403-html/bejamas-rec-task/issues"
+  },
+  "homepage": "https://github.com/403-html/bejamas-rec-task#readme",
+  "dependencies": {
+    "playwright": "^1.52.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.14.1"
+  }
+}
