@@ -38,6 +38,7 @@ You are required to create automated tests for the [Netlify website](https://www
 8. Data (like static text, urls, etc.) is stored in the `data` folder (divided by usage). This will allow for easy modification and maintenance of the test data without changing the test code.
 9. Crawlability and sitemap.xml verification is done by checking the `robots.txt` file and the `noindex` meta tag. For this I lifted requesting to the page by "request" method to the page object, so I can reuse it in the test cases. Not new API class because not needed + we don't use Netlify API.
 10. After using in few places, I realized that <https://www.netlify.com> could be a env variable, so I created a `BASE_URL` variable in the `.env` file.
+11. After finishing MVP, I started cleaning up the code. First I started with dependency injection in the page object (passing locators to the constructor, not the test itself).
 
 ## Assumptions/Limitations
 

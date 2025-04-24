@@ -19,27 +19,24 @@ test.describe("404 links", () => {
 
   test("should have working 404 page", async ({ netlifyPage }) => {
     await netlifyPage.goto("/nonexistent-page");
-    const title = netlifyPage.page.locator(
-      netlifyPage.locators.fourofour.title,
+    await expect(netlifyPage.locators.fourofour.title).toHaveText(
+      staticContent.fourofour.title,
     );
-    const description = netlifyPage.page.locator(
-      netlifyPage.locators.fourofour.description,
-    );
-    const link = netlifyPage.page.locator(netlifyPage.locators.fourofour.link);
-    await expect(title).toHaveText(staticContent.fourofour.title);
-    await expect(description).toContainText(
+    await expect(netlifyPage.locators.fourofour.description).toContainText(
       staticContent.fourofour.description,
     );
-    await expect(link).toHaveText(staticContent.fourofour.linkText);
-    await expect(link).toHaveAttribute("href", staticContent.fourofour.linkUrl);
+    await expect(netlifyPage.locators.fourofour.link).toHaveText(
+      staticContent.fourofour.linkText,
+    );
+    await expect(netlifyPage.locators.fourofour.link).toHaveAttribute(
+      "href",
+      staticContent.fourofour.linkUrl,
+    );
   });
 
-  test("should have working all links on homepage", async ({
-    netlifyPage,
-    page,
-  }) => {
+  test("should have working all links on homepage", async ({ netlifyPage }) => {
     test.setTimeout(60 * 1000);
-    await netlifyPage.goto("/");
+    await netlifyPage.goto();
     for (const link of allHomepageLinks) {
       const response = await netlifyPage.requestToPage(link);
       expect(response.status()).not.toBe(404);

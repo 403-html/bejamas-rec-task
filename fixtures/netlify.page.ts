@@ -1,15 +1,48 @@
-import type { Page } from "@playwright/test";
+import type { Page, Locator } from "@playwright/test";
 import { locators } from "../data/locators";
+import type { Locators } from "../data/locators";
 import "dotenv/config";
 
 export class NetlifyPage {
   readonly page: Page;
   readonly url: string;
-  public locators: typeof locators = locators;
+  public locators: Pick<Locators, "newsletter" | "meta" | "fourofour">;
 
   constructor(page: Page) {
     this.page = page;
     this.url = process.env.BASE_URL as string;
+
+    // Initialize locators as an empty object, otherwise TypeScript will complain
+    // about the properties not being defined
+    this.locators = {
+      newsletter: {},
+      meta: {},
+      fourofour: {},
+    } as Pick<Locators, "newsletter" | "meta" | "fourofour">;
+    this.setupLocators();
+  }
+
+  private setupLocators() {
+    this.locators.newsletter.input = this.page.locator(
+      locators.newsletter.input,
+    );
+    this.locators.newsletter.subheader = this.page.locator(
+      locators.newsletter.subheader,
+    );
+    this.locators.newsletter.subscribeButton = this.page.locator(
+      locators.newsletter.subscribeButton,
+    );
+    this.locators.newsletter.errorMessage = this.page.locator(
+      locators.newsletter.errorMessage,
+    );
+
+    this.locators.fourofour.title = this.page.locator(locators.fourofour.title);
+    this.locators.fourofour.description = this.page.locator(
+      locators.fourofour.description,
+    );
+    this.locators.fourofour.link = this.page.locator(locators.fourofour.link);
+
+    this.locators.meta.noIndex = this.page.locator(locators.meta.noIndex);
   }
 
   /**

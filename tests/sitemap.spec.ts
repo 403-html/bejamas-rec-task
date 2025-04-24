@@ -19,10 +19,7 @@ test.describe("Sitemap/Crawlability", () => {
     expect(robotsContent).toBe(testData.robots);
   });
   test("should homepage not have noindex meta tag", async ({ netlifyPage }) => {
-    await netlifyPage.goto("/");
-    const noIndexMetaTag = netlifyPage.page.locator(
-      netlifyPage.locators.meta.noIndex,
-    );
-    await expect(noIndexMetaTag).not.toBeAttached();
+    await netlifyPage.goto();
+    await expect(netlifyPage.locators.meta.noIndex).not.toBeAttached();
   });
 });

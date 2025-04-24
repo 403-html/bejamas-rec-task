@@ -1,3 +1,22 @@
+import type { Locator } from "@playwright/test";
+
+export type Locators = {
+  newsletter: {
+    input: Locator;
+    subheader: Locator;
+    subscribeButton: Locator;
+    errorMessage: Locator;
+  };
+  fourofour: {
+    title: Locator;
+    description: Locator;
+    link: Locator;
+  };
+  meta: {
+    noIndex: Locator;
+  };
+};
+
 export const locators = {
   newsletter: {
     subheader: "//section[contains(@class, 'newsletter-form')]//h2",
