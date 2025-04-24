@@ -27,6 +27,16 @@ export class NetlifyPage {
     await this.page.goto(`${this.url}${slug}`);
   }
 
+  /**
+   * Sends an HTTP request to a specified page and returns the response.
+   *
+   * @param slug - The path or URL to send the request to. Defaults to "/".
+   *               If the slug starts with "http", it is treated as a full URL.
+   * @param options - An optional object containing request options:
+   *   - `method` (string): The HTTP method to use (e.g., "GET", "POST"). Defaults to "GET".
+   *   - `data` (any): The payload to send with the request, if applicable.
+   * @returns A Promise resolving to the response of the request.
+   */
   async requestToPage(
     slug: string = "/",
     options: { method?: string; data?: any } = {},
