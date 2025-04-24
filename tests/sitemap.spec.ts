@@ -1,6 +1,7 @@
 import { test } from "../fixtures/base";
 import { expect } from "@playwright/test";
 import { staticContent } from "../data/static-content";
+import { testData } from "../data/test-data";
 
 test.describe("Sitemap/Crawlability", () => {
   test("should sitemap.xml be accessible", async ({ netlifyPage }) => {
@@ -15,7 +16,7 @@ test.describe("Sitemap/Crawlability", () => {
       "text/plain; charset=UTF-8",
     );
     const robotsContent = await response.text();
-    expect(robotsContent).toBe(staticContent.robots);
+    expect(robotsContent).toBe(testData.robots);
   });
   test("should homepage not have noindex meta tag", async ({ netlifyPage }) => {
     await netlifyPage.goto("/");

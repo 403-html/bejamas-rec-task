@@ -11,10 +11,4 @@ export const staticContent = {
     linkText: "Blog",
     linkUrl: "/blog",
   },
-  robots: `User-agent: *
-Allow: /
-
-Sitemap: https://www.netlify.com/sitemap.xml
-Sitemap: https://www.netlify.com/guide-to-composable-architecture/sitemap.xml
-`,
 };
