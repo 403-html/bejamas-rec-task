@@ -10,23 +10,35 @@ You are required to create automated tests for the [Netlify website](https://www
 
 1. Make sure you have Node.js >=18 and npm installed.
 2. Clone the repository
+   ```sh
+   $ git clone git@github.com:403-html/bejamas-rec-task.git
+   ```
 3. Navigate to the project directory
+   ```sh
+   $ cd bejamas-rec-task
+   ```
 4. Install dependencies
-5. Install Playwright browsers
+   ```sh
+   $ npm install
+   ```
+5. Install Playwright's default browsers (Firefox, Chromium, Webkit)
+   ```sh
+   $ npx playwright install
+   ```
 
 ## Tests execution steps
 
 1. Open terminal
 2. Navigate to the project directory
 3. [optional if not done already] [Setup project](#setup)
-4. Run the command `npm test` to execute the tests
+4. Run the command `npm run test` to execute the tests
 5. Check the test results in the terminal output
-6. Check the test results in the `test-results` directory
+6. Check the test results html report in the `playwright-results` directory
 
 ## Explanation of approach
 
 1. I used Playwright to create the test cases. As specified in the task.
-2. I turned on the reporter to `line` and `html`, so you can see the test results in the terminal output and in the `test-results` directory (by default it's gitignored, but for sake of the task I added it to the repo).
+2. I turned on the reporter to `line` and `html`, so you can see the test results in the terminal output and in the `playwright-results` directory (by default it's gitignored, but for sake of the task I added it to the repo).
 3. It should be small recruitment task, so I didn't built any sophisticated utils/used external services (more about it in assumptions/limitations).
 4. I used the Page Object Model design pattern to create a separate page object for the Netlify website. This allows for better organization and maintainability of the test code.
 5. I created three suite files, for test cases specified in the task. Each suite file contains one or more test cases (in assumptions I wrote why there might be more) that are related to the specific functionality of the Netlify website.
